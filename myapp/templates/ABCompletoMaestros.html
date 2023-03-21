@@ -1,0 +1,39 @@
+{% extends "layout.html" %} 
+ 
+ {% block content%}
+   {%from "_macros.html" import render_field%}
+ 
+   <div class="container">
+    <div class="row">
+
+        <h2>Maestros</h2>
+        <a href="/Maestros" class="btn btn-primary">Registrar</a>
+        <table>
+            <thead class="table table-striped table-bordered"> 
+                <tr class="tr-head">
+                    <th>Id</th>
+                    <th>Matricula</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for maestro in maestros%}
+                <tr>
+                    <td>{{maestro[0]}}</td>
+                    <td>{{maestro[4]}}</td>
+                    <td>{{maestro[1]}}</td>
+                    <td>{{maestro[2] + " " + maestro[3]}}</td>
+                    
+                    <td><a href="eliminarMaestros?matricula={{maestro[4]}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp;Eliminar</a></td>
+                    <td><a href="modificarMaestros?matricula={{maestro[4]}}" class="btn btn-warning"><i class="fas fa-pen-alt"></i>&nbsp;Actualizar</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+   </div>
+ 
+{% endblock %}

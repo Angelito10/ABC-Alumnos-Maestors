@@ -1,0 +1,42 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+{%from "_macros.html" import render_field%}
+<div class="row">
+    <div class="col-3"></div>
+        <div class="col-7" style="padding-top:50px;">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Eliminar Maestros</h2>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <form action="/eliminarMaestros" method="post">
+                            <div class="mb-3">
+                                {{render_field(form.id,class='form-control')}}
+                            </div>
+                            <div class="mb-3">
+                                {{render_field(form.matricula,class='form-control')}}
+                            </div>
+                            <div class="mb-3">
+                                {{render_field(form.nombre,class='form-control')}}
+                            </div>
+                            <div class="mb-3">
+                                {{render_field(form.apaterno,class='form-control')}}
+                            </div>
+                            <div class="mb-3">
+                                {{render_field(form.amaterno,class='form-control')}}
+                            </div>
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                            <input type="submit" id="reg-maestro" name="eliminar" value="Eliminar" class="btn btn-danger"/>
+                            <a href="ABCompletoMaestros" class="btn btn-success">
+                                <i class=""></i>Regresar
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{%endblock%}
